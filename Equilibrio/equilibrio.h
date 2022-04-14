@@ -38,6 +38,3 @@ string pila_pop(Nodo **inicio){
     
 }
 
-int cola_size(){
-
-}
