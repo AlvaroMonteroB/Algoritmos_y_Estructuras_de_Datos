@@ -8,47 +8,59 @@
 #include<string>
 #include<stack>
 #include<stdlib.h>
-#include<equilibrio.h>
+#include<C:\Users\Montero\Desktop\Algoritmos\Equilibrio\equilibrio.h>
 using namespace std;
 
 int main(){
     stack<char> signo;
     string cadena;
-    bool flag;
+    bool flag=true;
     int tam;
-    cout<<"Introduce un string para ser analizado";
+    cout<<"Introduce un string para ser analizado"<<endl;
     cin>>cadena;
     tam=cadena.size();
+    cout<<tam<<endl;
     for (int i = 0; i < tam; i++)
     {
-        if (cadena[i]=='(')
+        switch (cadena[i])
         {
-            signo.push(cadena[i]);
-        }else if(cadena[i]=='[' ){
-                signo.push(cadena[i]);
-        }else if(cadena[i]==')'){
-            if (signo.top()==cadena[i])
+        case '(':
+            signo.push('(');
+            break;
+        case '[':
+            signo.push('[');
+            break;
+        case ')':
+            if (signo.top()=='(')
             {
-                flag=true;
                 signo.pop();
+                flag=true;
             }else{
                 flag=false;
             }
+            
+            break;
+        case ']':
+            if(signo.top()=='['){
+                signo.pop();
+                flag=true;
+            }else{
+                flag=false;
+            }
+            break;
         
-        }else if(cadena[i]==']'){
-            if(signo.top()==cadena[i]){
-                flag=true;
-                signo.pop();
-            }else{
-                flag=false;
-            }
+        default:
+            break;
         }
         
     }
+    if(signo.size()>0){
+        flag=false;
+    }
     if(flag){
-        cout<<"Existe equilibrio";
+        cout<<"Existe equilibrio"<<endl;
     }else{
-        cout<<"No existe equilibrio";
+        cout<<"No existe equilibrio"<<endl;
     }
     system("pause");
     
