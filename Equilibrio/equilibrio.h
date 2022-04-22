@@ -38,3 +38,14 @@ string pila_pop(Nodo **inicio){
     
 }
 
+bool pila_empty(Nodo *inicio){
+    bool retVal;
+    if (inicio==NULL)
+    {
+        retVal=false;
+    }else{
+        retVal=true;
+    }
+    return retVal;
+}
+

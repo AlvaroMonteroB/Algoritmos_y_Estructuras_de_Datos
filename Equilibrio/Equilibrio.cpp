@@ -14,6 +14,8 @@ using namespace std;
 int main(){
     Nodo *inicio;
     inicio=new Nodo();
+    inicio->caract=NULL;
+    inicio->sig=nullptr;
     stack<char> signo;
     string cadena;
     bool flag=true;
@@ -27,21 +29,19 @@ int main(){
         switch (cadena[i])
         {
         case '(':
-            signo.push('(');
-            //pila_push(&inicio,'(');
+            pila_push(&inicio,'(');
             break;
         case '[':
-            signo.push('[');
-            //pila_push(&inicio,'[');
+            
+            pila_push(&inicio,'[');
             break;
         case ')':
-        if(signo.empty()){
+        if(pila_empty(inicio)){//checamos si nuestra pila está vacia
                 flag=false;
             }
-            else if (signo.top()=='(') //if(inicio->caract=='(')
+            else if(inicio->caract=='(')
             {
-                //pila_pop(&inicio);
-                signo.pop();
+                pila_pop(&inicio);
                 flag=true;
             }else{
                 flag=false;
@@ -49,13 +49,12 @@ int main(){
             
             break;
         case ']':
-            if(signo.empty()){
+            if(pila_empty(inicio)){
                 flag=false;
             }
-            else if(signo.top()=='[')//if(inicio->caract=='[')
+            else if(inicio->caract=='[')
             {
-                //pila_pop(&inicio);
-                signo.pop();
+                pila_pop(&inicio);
                 flag=true;
             }else{
                 flag=false;
@@ -66,9 +65,6 @@ int main(){
             break;
         }
         
-    }
-    if(signo.size()>0){
-        flag=false;
     }
     if(flag){
         cout<<"Existe equilibrio"<<endl;
