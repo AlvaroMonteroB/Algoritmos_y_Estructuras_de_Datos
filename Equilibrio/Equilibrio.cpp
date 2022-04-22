@@ -12,10 +12,7 @@
 using namespace std;
 
 int main(){
-    Nodo *inicio;
-    inicio=new Nodo();
-    inicio->caract=NULL;
-    inicio->sig=nullptr;
+    Nodo *inicio=nullptr;
     stack<char> signo;
     string cadena;
     bool flag=true;
@@ -36,7 +33,7 @@ int main(){
             pila_push(&inicio,'[');
             break;
         case ')':
-        if(pila_empty(inicio)){//checamos si nuestra pila está vacia
+             if(pila_empty(inicio)){//checamos si nuestra pila está vacia
                 flag=false;
             }
             else if(inicio->caract=='(')
@@ -66,6 +63,11 @@ int main(){
         }
         
     }
+    if (pila_size(inicio)>0)
+    {
+        flag=false;
+    }
+    
     if(flag){
         cout<<"Existe equilibrio"<<endl;
     }else{
