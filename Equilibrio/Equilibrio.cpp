@@ -15,7 +15,7 @@ int main(){
     Nodo *inicio=nullptr;
     stack<char> signo;
     string cadena;
-    bool flag=true;
+    bool flag=true,sflag=true;
     int tam;
     cout<<"Introduce un string para ser analizado"<<endl;
     cin>>cadena;
@@ -35,6 +35,7 @@ int main(){
         case ')':
              if(pila_empty(inicio)){//checamos si nuestra pila está vacia
                 flag=false;
+                sflag=false;
             }
             else if(inicio->caract=='(')
             {
@@ -42,6 +43,7 @@ int main(){
                 flag=true;
             }else{
                 flag=false;
+                sflag=false;
             }
             
             break;
@@ -55,6 +57,7 @@ int main(){
                 flag=true;
             }else{
                 flag=false;
+                sflag=false;
             }
             break;
         
@@ -68,7 +71,7 @@ int main(){
         flag=false;
     }
     
-    if(flag){
+    if(flag&&sflag){
         cout<<"Existe equilibrio"<<endl;
     }else{
         cout<<"No existe equilibrio"<<endl;
