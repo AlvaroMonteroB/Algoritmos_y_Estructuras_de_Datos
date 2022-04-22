@@ -13,7 +13,7 @@ typedef struct Nodo{
     Nodo *sig;
 }Nodo;
 
-string pila_push(Nodo **inicio,char dato){
+void pila_push(Nodo **inicio,char dato){
     Nodo *n_caract;
     n_caract=new Nodo();
     n_caract->sig=NULL;
@@ -28,7 +28,7 @@ string pila_push(Nodo **inicio,char dato){
     
 
 }
-string pila_pop(Nodo **inicio){
+void pila_pop(Nodo **inicio){
     Nodo *aux;
     Nodo *aux2;
     aux=(*inicio);
