@@ -8,9 +8,8 @@
 #include<string>
 #include<stack>
 #include<stdlib.h>
-#include<C:\Users\Montero\Desktop\Algoritmos\Equilibrio\equilibrio.h>
+#include "equilibrio.h"
 using namespace std;
-
 int main(){
     Nodo *inicio;
     inicio=new Nodo();
