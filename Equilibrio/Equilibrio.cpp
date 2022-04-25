@@ -8,7 +8,7 @@
 #include<string>
 #include<stack>
 #include<stdlib.h>
-#include "equilibrio.h"
+#include<C:\Users\acer\Desktop\Repositorios\Algoritmos\Equilibrio\equilibrio.h>
 using namespace std;
 int main(){
     Nodo *inicio;
