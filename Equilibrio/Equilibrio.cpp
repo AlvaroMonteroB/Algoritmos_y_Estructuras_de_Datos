@@ -25,12 +25,29 @@ int main(){
     {
         switch (cadena[i])
         {
+        case '{':
+            pila_push(&inicio,'{');
+            break;
         case '(':
             pila_push(&inicio,'(');
             break;
         case '[':
             
             pila_push(&inicio,'[');
+            break;
+        case '}':
+            if(pila_empty(inicio)){//checamos si nuestra pila está vacia
+                flag=false;
+                sflag=false;
+            }
+            else if(inicio->caract=='{')
+            {
+                pila_pop(&inicio);
+                flag=true;
+            }else{
+                flag=false;
+                sflag=false;
+            }
             break;
         case ')':
              if(pila_empty(inicio)){//checamos si nuestra pila está vacia
