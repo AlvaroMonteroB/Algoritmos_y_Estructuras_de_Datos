@@ -8,7 +8,7 @@
 #include<string>
 #include<stack>
 #include<stdlib.h>
-#include<C:\Users\Montero\Desktop\REPOSITORIO\Algoritmos\Equilibrio\equilibrio.h>
+#include"equilibrio.h"
 using namespace std;
 
 int main(){
