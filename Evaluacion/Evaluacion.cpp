@@ -29,16 +29,30 @@ using namespace std;
 
 int main(){
     int len,count;
+    bool eq;
     string posf,pref;
     stack<char> operadores;
     stack<char> output;
     string frase;
-    cout<<"Introduce un string"<<endl;
-    cin>>frase;
-    pref=prefijo(frase);
-    cout<<"En prefijo es: "<<pref<<endl;
-    posf=posfijo(frase);
-    cout<<"En posfijo es: "<<posf<<endl;
-    system("pause");
+    do
+    {
+        cout<<"Introduce un string"<<endl;
+        cin>>frase;
+        eq=equilibrio(frase);
+        if (eq)
+        {
+        pref=prefijo(frase);
+        cout<<"En prefijo es: "<<pref<<endl;
+        posf=posfijo(frase);
+        cout<<"En posfijo es: "<<posf<<endl;
+        system("pause");
+        }else{
+            cout<<"Tu expresion no esta equilibrada";
+            }
+    } while (5);
+    
+    
+    
+    
     
 }

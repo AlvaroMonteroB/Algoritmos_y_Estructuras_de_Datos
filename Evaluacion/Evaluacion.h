@@ -3,6 +3,7 @@
 using namespace std;
 string posfijo(string frase);
 string prefijo(string frase);
+bool equilibrio(string cadena);
 
 string posfijo(string frase){//usar cola para la salida
     int len;
