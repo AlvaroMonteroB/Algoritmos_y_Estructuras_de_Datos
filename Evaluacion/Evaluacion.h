@@ -73,3 +73,70 @@ string prefijo(string frase){
 string evaluacion(string frase){
     int tam=frase.size();
 }
+
+
+bool equilibrio(string cadena){
+    stack<char>signo;
+    int tam;
+    bool flag,sflag,eq;
+    tam=cadena.size();
+    cout<<tam<<endl;
+    for (int i = 0; i < tam; i++)
+    {
+        switch (cadena[i])
+        {
+        case '(':
+            signo.push('(');
+            break;
+        case '[':
+            signo.push('[');
+            break;
+        case ')':
+            if (signo.empty())
+            {
+                sflag=false;
+            }
+            
+            if (signo.top()=='(')
+            {
+                signo.pop();
+                flag=true;
+            }else{
+                flag=false;
+            }
+            
+            break;
+        case ']':
+         if (signo.empty())
+            {
+                sflag=false;
+            }
+            if(signo.top()=='['){
+                signo.pop();
+                flag=true;
+            }else{
+                flag=false;
+            }
+            break;
+        
+        default:
+            break;
+        }
+        
+    }
+    if(signo.size()>0){
+        flag=false;
+    }
+    if(sflag&&flag){
+        cout<<"Existe equilibrio"<<endl;
+        eq=true;
+    }else{
+        cout<<"No existe equilibrio"<<endl;
+        eq=false;
+    }
+    return eq;
+    
+
+
+
+}
