@@ -1,5 +1,6 @@
 #include<iostream>
 #include<stack>
+#include<typeinfo>
 using namespace std;
 string posfijo(string frase);
 string prefijo(string frase);
@@ -26,7 +27,7 @@ string prefijo(string frase){
     char aux,comparacion;
     stack<char> operadores;
     stack<char> output;
-    while (count>=0)
+    for (int i = len; i >= 0; i--)
     {
         comparacion=frase[count];
         switch (comparacion)
@@ -55,8 +56,8 @@ string prefijo(string frase){
             output.push(comparacion);
             break;
         }
-        count--;
     }
+    
     
     int cc=0;
     
@@ -79,7 +80,7 @@ string evaluacion(string frase){
 bool equilibrio(string cadena){
     stack<char>signo;
     int tam;
-    bool flag,sflag,eq;
+    bool flag,sflag=true,eq;
     tam=cadena.size();
     cout<<tam<<endl;
     for (int i = 0; i < tam; i++)
