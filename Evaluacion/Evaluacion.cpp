@@ -27,10 +27,6 @@ PREFIJA
 #include "Evaluacion.h"
 using namespace std;
 
-
-string posfijo(string frase);
-string prefijo(string frase);
-
 int main(){
     int len,count;
     string posf,pref;
@@ -43,5 +39,6 @@ int main(){
     cout<<"En prefijo es: "<<pref<<endl;
     posf=posfijo(frase);
     cout<<"En posfijo es: "<<posf<<endl;
+    system("pause");
     
 }

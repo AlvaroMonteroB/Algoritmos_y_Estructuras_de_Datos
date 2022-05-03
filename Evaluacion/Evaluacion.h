@@ -1,6 +1,21 @@
 #include<iostream>
+#include<stack>
+using namespace std;
+string posfijo(string frase);
+string prefijo(string frase);
+
 string posfijo(string frase){//usar cola para la salida
-    int a;
+    int len;
+    char comp;
+    string salida;
+    stack<char> operadores;
+    stack<char> output;
+    len=frase.size();
+    for (int i = 0; i < len; i++)
+    {
+        comp=salida[i];
+    }
+    return salida;
 }
 string prefijo(string frase){
     int count,len;
