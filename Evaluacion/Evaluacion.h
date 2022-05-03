@@ -82,7 +82,6 @@ bool equilibrio(string cadena){
     int tam;
     bool flag,sflag=true,eq;
     tam=cadena.size();
-    cout<<tam<<endl;
     for (int i = 0; i < tam; i++)
     {
         switch (cadena[i])

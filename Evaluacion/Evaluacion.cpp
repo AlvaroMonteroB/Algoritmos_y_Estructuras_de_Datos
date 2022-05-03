@@ -47,9 +47,9 @@ int main(){
         cout<<"En posfijo es: "<<posf<<endl;
         system("pause");
         }else{
-            cout<<"Tu expresion no esta equilibrada";
+            return 0;
             }
-    } while (5);
+    } while (1>0);
     
     
     
