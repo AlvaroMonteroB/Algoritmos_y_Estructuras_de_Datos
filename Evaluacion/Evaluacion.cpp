@@ -41,10 +41,10 @@ int main(){
         eq=equilibrio(frase);
         if (eq)
         {
-        pref=prefijo(frase);
+       /* pref=prefijo(frase);
         cout<<"En prefijo es: "<<pref<<endl;
-        posf=postfijo(frase);
-        cout<<"En posfijo es: "<<posf<<endl;
+        */posf=postfijo(frase);
+        cout<<"En postfijo es: "<<posf<<endl;
         system("pause");
         }else{
             return 0;

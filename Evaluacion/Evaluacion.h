@@ -1,5 +1,6 @@
 #include<iostream>
 #include<stack>
+#include<queue>
 #include<typeinfo>
 using namespace std;
 string postfijo(string frase);//posfija
@@ -15,7 +16,7 @@ string postfijo(string frase){//TODO: usar cola para la salida
     char comp;
     string salida;
     stack<char> operadores;
-    stack<char> output;
+    queue<char> output;
     len=frase.size();
     for (int i = 0; i < len; i++)
     {
@@ -53,14 +54,24 @@ string postfijo(string frase){//TODO: usar cola para la salida
             break;
         }
     }
+    while (!operadores.empty())
+    {
+        output.push(operadores.top());
+        operadores.pop();
+    }
+    
     for (int i = 0; i < output.size(); i++)
     {
-        salida[i]=output.top();
+        salida[i]=output.front();
         output.pop();
     }
     
     return salida;
 }
+
+
+
+
 string prefijo(string frase){//FIXME: 
     int count,len;
     len=frase.size();
@@ -209,6 +220,7 @@ int prioridad(char car){
         return 1;
         break;
     default:
+        return 0;
         break;
     }
 }
