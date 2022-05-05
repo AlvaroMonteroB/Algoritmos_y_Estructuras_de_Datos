@@ -2,11 +2,14 @@
 #include<stack>
 #include<typeinfo>
 using namespace std;
-string posfijo(string frase);
-string prefijo(string frase);
+string postfijo(string frase);//posfija
+string prefijo(string frase);//inifja
 bool equilibrio(string cadena);
-
-string posfijo(string frase){//usar cola para la salida
+int prioridad(char car);
+//==================================================================
+//======================FUNCIONES PRINCIPALES=======================
+//==================================================================
+string postfijo(string frase){//TODO: usar cola para la salida  
     int len;
     char comp;
     string salida;
@@ -16,10 +19,19 @@ string posfijo(string frase){//usar cola para la salida
     for (int i = 0; i < len; i++)
     {
         comp=salida[i];
+        switch (comp)
+        {
+        case '(':
+            
+            break;
+        
+        default:
+            break;
+        }
     }
     return salida;
 }
-string prefijo(string frase){
+string prefijo(string frase){//FIXME: 
     int count,len;
     len=frase.size();
     count=len;
@@ -72,7 +84,11 @@ string prefijo(string frase){
 }
 
 
-string evaluacion(string frase){
+
+//==================================================================
+//======================FUNCIONES AUXILIARES========================
+//==================================================================
+string evaluacion(string frase){//TODO:
     int tam=frase.size();
 }
 
@@ -140,4 +156,29 @@ bool equilibrio(string cadena){
 
 
 
+}
+
+
+int prioridad(char car){
+    switch (car)
+    {
+    case '^':
+        return 3;
+        break;
+
+    case '/':
+        return 2;
+        break;
+    
+    case '*':
+        return 2;
+        break;
+    
+    case '+':
+    case '-':
+        return 1;
+        break;
+    default:
+        break;
+    }
 }
