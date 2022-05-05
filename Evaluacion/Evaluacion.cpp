@@ -43,7 +43,7 @@ int main(){
         {
         pref=prefijo(frase);
         cout<<"En prefijo es: "<<pref<<endl;
-        posf=posfijo(frase);
+        posf=postfijo(frase);
         cout<<"En posfijo es: "<<posf<<endl;
         system("pause");
         }else{
