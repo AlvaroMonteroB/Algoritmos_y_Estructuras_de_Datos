@@ -9,6 +9,7 @@ int prioridad(char car);
 //==================================================================
 //======================FUNCIONES PRINCIPALES=======================
 //==================================================================
+//infija a postfija
 string postfijo(string frase){//TODO: usar cola para la salida  
     int len;
     char comp;
@@ -18,17 +19,46 @@ string postfijo(string frase){//TODO: usar cola para la salida
     len=frase.size();
     for (int i = 0; i < len; i++)
     {
-        comp=salida[i];
-        switch (comp)
+        
+        switch (frase[i])
         {
         case '(':
-            
+            operadores.push('(');
             break;
+        case ')':
+                while (operadores.top()!='(')
+                {
+                    comp=operadores.top();
+                    operadores.pop();
+                    output.push(comp);
+                }
+                operadores.pop();
+            break;
+        case '^':
+        case '*':
+        case '/':
+        case '+':
+        case '-':
+            while (prioridad(frase[i])<=prioridad(operadores.top()))
+            {
+                comp=operadores.top();
+                operadores.pop();
+                output.push(comp);
+            }
+            operadores.push(frase[i]);
         
         default:
+        //es un numero
+        output.push(frase[i]);
             break;
         }
     }
+    for (int i = 0; i < output.size(); i++)
+    {
+        salida[i]=output.top();
+        output.pop();
+    }
+    
     return salida;
 }
 string prefijo(string frase){//FIXME: 
