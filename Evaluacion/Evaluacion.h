@@ -12,7 +12,7 @@ int prioridad(char car);
 //======================FUNCIONES PRINCIPALES=======================
 //==================================================================
 //infija a postfija
-string postfijo(string frase){//FIXME: Manda repetidos los operadores  
+string postfijo(string frase){ 
     char comp;
     char *sal;
     
