@@ -48,6 +48,7 @@ string postfijo(string frase){//FIXME: Manda repetidos los operadores
                 output.push(comp);
             }
             operadores.push(frase[i]);
+            break;
         
         default:
         //es un numero
