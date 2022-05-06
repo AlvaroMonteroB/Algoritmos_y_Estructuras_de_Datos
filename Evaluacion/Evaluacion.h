@@ -2,6 +2,7 @@
 #include<stack>
 #include<queue>
 #include<typeinfo>
+#include<string.h>
 using namespace std;
 string postfijo(string frase);//posfija
 string prefijo(string frase);//inifja
@@ -11,14 +12,14 @@ int prioridad(char car);
 //======================FUNCIONES PRINCIPALES=======================
 //==================================================================
 //infija a postfija
-string postfijo(string frase){//TODO: usar cola para la salida  
-    int len;
+string postfijo(string frase){//FIXME: Manda repetidos los operadores  
     char comp;
+    char *sal;
+    
     string salida;
     stack<char> operadores;
     queue<char> output;
-    len=frase.size();
-    for (int i = 0; i < len; i++)
+    for (int i = 0; i < frase.size(); i++)
     {
         
         switch (frase[i])
@@ -52,20 +53,19 @@ string postfijo(string frase){//TODO: usar cola para la salida
         //es un numero
         output.push(frase[i]);
             break;
-        }
+        } 
     }
     while (!operadores.empty())
     {
         output.push(operadores.top());
         operadores.pop();
     }
-    
-    for (int i = 0; i < output.size(); i++)
+   
+    while(!output.empty())
     {
-        salida[i]=output.front();
+        salida+=output.front();
         output.pop();
     }
-    
     return salida;
 }
 
@@ -112,13 +112,11 @@ string prefijo(string frase){//FIXME:
     }
     
     
-    int cc=0;
-    
     while (output.empty()!=false)
     {
-        salida[cc]=output.top();
+        salida+=output.top();
         output.pop();
-        cc++;
+        
     }
     
     return salida;
