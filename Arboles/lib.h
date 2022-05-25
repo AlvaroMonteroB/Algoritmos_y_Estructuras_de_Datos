@@ -49,7 +49,7 @@ void A_nuevoNodo(Nodo *&Hoja,int numero){//Paso por referencia
 void menu(){
     int opt,num;
     Nodo *raiz;
-    cout<<"1.-Crear Nodo"<<endl<<"2.-Eliminar nodos"<<endl<<"3.-Imprimir nodos en preorden"<<endl<<"4.-Imprimir en postorden";
+    cout<<"1.-Crear Nodo"<<endl<<"2.-Eliminar nodos"<<endl<<"3.-Imprimir nodos en preorden"<<endl<<"4.-Imprimir en postorden"<<endl;
     cin>>opt;
     switch (opt)
     {
@@ -61,12 +61,12 @@ void menu(){
     case 2:
         break;
     case 3:
-    if (raiz)
-    {
-        Preorden(raiz);
-    }else{
-        cout<<"No hay arbol"<<endl;
-    }
+        if (raiz)
+        {
+            Preorden(raiz);
+        }else{
+            cout<<"No hay arbol"<<endl;
+        }
     
     
         break;
@@ -84,7 +84,8 @@ void menu(){
 Nodo* C_nuevoNodo(int valor){
     Nodo *a=new Nodo();
     a->clave=valor;
-    a->derecha=a->izquierda=nullptr;
+    a->derecha=NULL;
+    a->izquierda=NULL;
     return a;
 }
 
