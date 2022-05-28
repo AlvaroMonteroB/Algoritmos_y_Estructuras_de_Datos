@@ -17,6 +17,8 @@ void menu();
 Nodo* C_nuevoNodo(int valor);
 void A_nuevoNodo(Nodo *&Hoja,int numero);
 void Preorden(Nodo *R);
+void inorden(Nodo *R);
+void posorden(Nodo *R);
 
 //================================================================
 void A_nuevoNodo(Nodo *&Hoja,int numero){//Paso por referencia
@@ -95,4 +97,12 @@ void Preorden(Nodo *R){
         Preorden(R->izquierda);
         Preorden(R->derecha);
     }
+}
+
+void inorden(Nodo *R){
+
+}
+
+void posorden(Nodo *R){
+    
 }
