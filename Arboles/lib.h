@@ -19,6 +19,10 @@ bool A_nuevoNodo(Nodo *&Hoja,int numero);
 void Preorden(Nodo *R);
 void inorden(Nodo *R);
 void posorden(Nodo *R);
+void preordenconv(Nodo *R);
+void preordenconv(Nodo *R);
+void posordenconv(Nodo *R);
+void inordenconv(Nodo *R);
 
 //================================================================
 bool A_nuevoNodo(Nodo *&Hoja,int numero){//Paso por referencia
@@ -51,7 +55,7 @@ bool A_nuevoNodo(Nodo *&Hoja,int numero){//Paso por referencia
 
 void menu(Nodo *&raiz){
     int opt,num;
-    cout<<"1.-Crear Nodo"<<endl<<"2.-Eliminar nodos"<<endl<<"3.-Imprimir nodos en preorden"<<endl<<"4.-Imprimir en postorden"<<endl;
+    cout<<"1.-Crear Nodo"<<endl<<"2.-Eliminar nodos"<<endl<<"3.-Imprimir nodos en preorden"<<endl<<"4.-Imprimir en postorden"<<endl<<"5.-Imprimir inorden"<<endl<<"6.-Preorden converso"<<endl<<"7.-Posorden converso"<<endl<<"8.-Inorden converso"<<endl;
     cin>>opt;
     switch (opt)
     {
@@ -61,19 +65,63 @@ void menu(Nodo *&raiz){
         A_nuevoNodo(raiz,num);
         break;
     case 2:
+        if (raiz!=NULL)
+        {
+            
+        }else{
+            cout<<"No hay arbol"<<endl;
+        }
         break;
     case 3:
-        if (raiz)
+        if (raiz!=NULL)
         {
             Preorden(raiz);
         }else{
             cout<<"No hay arbol"<<endl;
         }
-    
-    
         break;
     case 4:
+    if (raiz!=NULL)
+        {
+            posorden(raiz);
+        }else{
+            cout<<"No hay arbol"<<endl;
+        }
         break;
+    case 5:
+    if (raiz!=NULL)
+        {
+            inorden(raiz);
+        }else{
+            cout<<"No hay arbol"<<endl;
+        }
+        break;
+    case 6:
+        if (raiz!=NULL)
+        {
+            preordenconv(raiz);
+        }else{
+            cout<<"No hay arbol"<<endl;
+        }
+        break;
+    case 7:
+        if (raiz!=NULL)
+        {
+            
+        }else{
+            cout<<"No hay arbol"<<endl;
+        }
+        break;
+    case 8:
+        if (raiz!=NULL)
+        {
+            
+        }else{
+            cout<<"No hay arbol"<<endl;
+        }
+        break;
+
+    default:
     cout<<"Introduce una opcion valida"<<endl;
     system("pause");
     system("cls");
@@ -101,13 +149,35 @@ void Preorden(Nodo *R){
 }
 
 void inorden(Nodo *R){
-    inorden(R->izquierda);
-    cout<<R->clave;
-    inorden(R->derecha);
+    if (R)
+    {
+        inorden(R->izquierda);
+        cout<<R->clave;
+        inorden(R->derecha); 
+    }
+    
+    
 }
 
 void posorden(Nodo *R){
-    posorden(R->izquierda);
-    posorden(R->derecha);
-    cout<<R->clave;
+    if (R)
+    {
+        posorden(R->izquierda);
+        posorden(R->derecha);
+        cout<<R->clave;
+    }
+    
+    
+}
+
+void preordenconv(Nodo *R){
+
+}
+
+void posordenconv(Nodo *R){
+
+}
+
+void inordenconv(Nodo *R){
+
 }
