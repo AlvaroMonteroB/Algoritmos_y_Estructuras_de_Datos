@@ -28,8 +28,7 @@ void inordenconv(Nodo *R);
 bool A_nuevoNodo(Nodo *&Hoja,int numero){//Paso por referencia
     if (Hoja==NULL)
     {
-        
-        Nodo *Hoja=C_nuevoNodo(numero);
+        Hoja=C_nuevoNodo(numero);
         return true;
     }
     if (Hoja->clave==numero)
@@ -132,7 +131,15 @@ void menu(Nodo *&raiz){
 }
 
 Nodo* C_nuevoNodo(int valor){
-    Nodo *a=new Nodo();
+    Nodo *a=(Nodo*)malloc(sizeof(Nodo));
+    if (a==NULL)
+    {
+        cout<<"Error al asignar memoria";
+        return NULL;
+    }else{
+        cout<<"Memoria alocada con exito"<<endl;
+    }
+    
     a->clave=valor;
     a->derecha=NULL;
     a->izquierda=NULL;
