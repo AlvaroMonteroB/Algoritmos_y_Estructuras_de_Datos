@@ -74,7 +74,7 @@ void menu(Nodo *&raiz){
     case 3:
         if (raiz!=NULL)
         {
-            Preorden(raiz);
+            Preorden(raiz);cout<<endl;
         }else{
             cout<<"No hay arbol"<<endl;
         }
@@ -82,7 +82,7 @@ void menu(Nodo *&raiz){
     case 4:
     if (raiz!=NULL)
         {
-            posorden(raiz);
+            posorden(raiz);cout<<endl;
         }else{
             cout<<"No hay arbol"<<endl;
         }
@@ -90,7 +90,7 @@ void menu(Nodo *&raiz){
     case 5:
     if (raiz!=NULL)
         {
-            inorden(raiz);
+            inorden(raiz);cout<<endl;
         }else{
             cout<<"No hay arbol"<<endl;
         }
@@ -98,7 +98,7 @@ void menu(Nodo *&raiz){
     case 6:
         if (raiz!=NULL)
         {
-            preordenconv(raiz);
+            preordenconv(raiz);cout<<endl;
         }else{
             cout<<"No hay arbol"<<endl;
         }
@@ -106,7 +106,7 @@ void menu(Nodo *&raiz){
     case 7:
         if (raiz!=NULL)
         {
-            
+            posordenconv(raiz); cout<<endl;
         }else{
             cout<<"No hay arbol"<<endl;
         }
@@ -114,7 +114,7 @@ void menu(Nodo *&raiz){
     case 8:
         if (raiz!=NULL)
         {
-            
+            inordenconv(raiz); cout<<endl;
         }else{
             cout<<"No hay arbol"<<endl;
         }
@@ -149,7 +149,7 @@ Nodo* C_nuevoNodo(int valor){
 
 void Preorden(Nodo *R){
     if(R){
-        cout<<R->clave;
+        cout<<R->clave<<" ";
         Preorden(R->izquierda);
         Preorden(R->derecha);
     }
@@ -159,7 +159,7 @@ void inorden(Nodo *R){
     if (R)
     {
         inorden(R->izquierda);
-        cout<<R->clave;
+        cout<<R->clave<<" ";
         inorden(R->derecha); 
     }
     
@@ -171,20 +171,32 @@ void posorden(Nodo *R){
     {
         posorden(R->izquierda);
         posorden(R->derecha);
-        cout<<R->clave;
+        cout<<R->clave<<" ";
     }
     
     
 }
 
 void preordenconv(Nodo *R){
-
+        cout<<R->clave<<" ";
+        preordenconv(R->derecha);
+        preordenconv(R->izquierda);
 }
 
 void posordenconv(Nodo *R){
-
+         if (R)
+    {
+        posordenconv(R->derecha);
+        posordenconv(R->izquierda);
+        cout<<R->clave<<" ";
+    }
 }
 
 void inordenconv(Nodo *R){
-
+        if (R)
+    {
+        inordenconv(R->derecha);
+        cout<<R->clave<<" ";
+        inordenconv(R->izquierda); 
+    }
 }
