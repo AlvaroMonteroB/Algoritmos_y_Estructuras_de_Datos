@@ -23,6 +23,8 @@ void preordenconv(Nodo *R);
 void preordenconv(Nodo *R);
 void posordenconv(Nodo *R);
 void inordenconv(Nodo *R);
+void eliminar(Nodo *&raiz);
+void espejo(Nodo *raiz);
 
 //================================================================
 bool A_nuevoNodo(Nodo *&Hoja,int numero){//Paso por referencia
@@ -199,4 +201,12 @@ void inordenconv(Nodo *R){
         cout<<R->clave<<" ";
         inordenconv(R->izquierda); 
     }
+}
+
+void eliminar(Nodo *&raiz){
+
+}
+
+void espejo(Nodo *raiz){
+
 }
