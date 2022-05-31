@@ -15,32 +15,33 @@ typedef struct Nodo{
 //================================================================
 void menu();
 Nodo* C_nuevoNodo(int valor);
-void A_nuevoNodo(Nodo *&Hoja,int numero);
+bool A_nuevoNodo(Nodo *&Hoja,int numero);
 void Preorden(Nodo *R);
 void inorden(Nodo *R);
 void posorden(Nodo *R);
 
 //================================================================
-void A_nuevoNodo(Nodo *&Hoja,int numero){//Paso por referencia
+bool A_nuevoNodo(Nodo *&Hoja,int numero){//Paso por referencia
     if (Hoja==NULL)
     {
+        
         Nodo *Hoja=C_nuevoNodo(numero);
-        return;
+        return true;
     }
-    if ((Hoja)->clave==numero)
+    if (Hoja->clave==numero)
     {
         cout<<"El valor ya existe";
-        return;
+        return true;
     }
     if ((Hoja)->clave>numero)//izquierda
     {
         A_nuevoNodo((Hoja)->izquierda,numero);
-        return;
+        return true;
     }
     if (Hoja->clave<numero)
     {
         A_nuevoNodo(Hoja->derecha,numero);
-        return;
+        return true;
     }
     
     
@@ -48,9 +49,8 @@ void A_nuevoNodo(Nodo *&Hoja,int numero){//Paso por referencia
 
 }
 
-void menu(){
+void menu(Nodo *&raiz){
     int opt,num;
-    Nodo *raiz;
     cout<<"1.-Crear Nodo"<<endl<<"2.-Eliminar nodos"<<endl<<"3.-Imprimir nodos en preorden"<<endl<<"4.-Imprimir en postorden"<<endl;
     cin>>opt;
     switch (opt)
@@ -88,6 +88,7 @@ Nodo* C_nuevoNodo(int valor){
     a->clave=valor;
     a->derecha=NULL;
     a->izquierda=NULL;
+    
     return a;
 }
 
@@ -100,9 +101,13 @@ void Preorden(Nodo *R){
 }
 
 void inorden(Nodo *R){
-
+    inorden(R->izquierda);
+    cout<<R->clave;
+    inorden(R->derecha);
 }
 
 void posorden(Nodo *R){
-    
+    posorden(R->izquierda);
+    posorden(R->derecha);
+    cout<<R->clave;
 }

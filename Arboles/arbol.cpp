@@ -3,8 +3,9 @@
 using namespace std;
 
 int main(){
+    Nodo *raiz=NULL;
     while(true){
-    menu();
+    menu(raiz);
     }
     
 
