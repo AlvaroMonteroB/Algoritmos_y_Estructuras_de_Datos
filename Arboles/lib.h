@@ -13,7 +13,7 @@ typedef struct Nodo{
 
 }Nodo;
 //================================================================
-void menu();
+void menu(Nodo *&raiz);
 Nodo* C_nuevoNodo(int valor);
 bool A_nuevoNodo(Nodo *&Hoja,int numero);
 void Preorden(Nodo *R);
@@ -204,9 +204,10 @@ void inordenconv(Nodo *R){
 }
 
 void eliminar(Nodo *&raiz){
-
+        
 }
 
 void espejo(Nodo *raiz){
+        
 
 }
