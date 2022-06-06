@@ -68,7 +68,7 @@ void menu(Nodo *&raiz){
     case 2:
         if (raiz!=NULL)
         {
-            
+            eliminar(raiz);
         }else{
             cout<<"No hay arbol"<<endl;
         }
