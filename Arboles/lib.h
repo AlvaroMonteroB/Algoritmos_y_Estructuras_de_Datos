@@ -132,7 +132,7 @@ void menu(Nodo *&raiz){
 
 }
 
-Nodo* C_nuevoNodo(int valor){
+Nodo * C_nuevoNodo(int valor){
     Nodo *a=(Nodo*)malloc(sizeof(Nodo));
     if (a==NULL)
     {
