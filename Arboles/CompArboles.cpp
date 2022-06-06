@@ -4,9 +4,10 @@
 using namespace std;
 
 int main(){
-    Nodo *raiz=NULL;
+    Nodo *raiz1=NULL;
+    Nodo *raiz2=NULL;
     while(true){
-    menu2(raiz);
+    menu2(raiz1,raiz2);
     }
     
 
