@@ -27,26 +27,28 @@ void menu2(Nodo *&raiz1,Nodo *&raiz2){
     switch (opt)
     {
     case 1:
-        cout<<"Introduce un numero";
+        cout<<"Introduce un numero"<<endl;
         cin>>cant;
         A_nuevoNodo(raiz1,cant);
         break;
     case 2:
-        cout<<"Introduce un numero";
+        cout<<"Introduce un numero"<<endl;
         cin>>cant;
-        A_nuevoNodo(raiz1,cant);
+        A_nuevoNodo(raiz2,cant);
         break;
     case 3:
         bool a;
         a=comp_arbol(raiz1,raiz2);
         if (a)
         {
-            cout<<"Los arboles son iguales";
+            cout<<"Los arboles son iguales"<<endl;
+        }else{
+            cout<<"Los arboles no son iguales"<<endl;
         }
         
         break;
     default:
-        cout<<"Introduce una opción válida";
+        cout<<"Introduce una opción válida"<<endl;
         break;
     }
 }
@@ -73,7 +75,7 @@ bool A_nuevoNodo(Nodo *&Hoja,int numero){//Paso por referencia
     }
     if (Hoja->clave==numero)
     {
-        cout<<"El valor ya existe";
+        cout<<"El valor ya existe"<<endl;
         return true;
     }
     if ((Hoja)->clave>numero)//izquierda
