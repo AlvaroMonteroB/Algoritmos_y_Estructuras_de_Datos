@@ -24,8 +24,10 @@ void preordenconv(Nodo *R);
 void preordenconv(Nodo *R);
 void posordenconv(Nodo *R);
 void inordenconv(Nodo *R);
-void eliminar(Nodo *&raiz);
+void eliminar(Nodo *&raiz,int elim);
 void espejo(Nodo *raiz,Nodo *&Esp);
+int Val_min(Nodo raiz);
+int Val_max(Nodo raiz);
 
 //================================================================
 bool A_nuevoNodo(Nodo *&Hoja,int numero){//Paso por referencia
@@ -56,7 +58,7 @@ bool A_nuevoNodo(Nodo *&Hoja,int numero){//Paso por referencia
 }
 
 void menu(Nodo *&raiz){
-    int opt,num;
+    int opt,num,minmax;
     Nodo *arbolespejo=NULL;
     cout<<"1.-Crear Nodo"<<endl<<"2.-Eliminar nodos"<<endl<<"3.-Imprimir nodos en preorden"<<endl<<"4.-Imprimir en postorden"<<endl<<"5.-Imprimir inorden"<<endl<<"6.-Preorden converso"<<endl<<"7.-Posorden converso"<<endl<<"8.-Inorden converso"<<endl<<"9.-Arbol espejo"<<endl<<"10.-Valor minimo"<<endl<<"11.-Valor maximo"<<endl;
     cin>>opt;
@@ -70,7 +72,10 @@ void menu(Nodo *&raiz){
     case 2:
         if (raiz!=NULL)
         {
-            eliminar(raiz);
+            int elim;
+            cout<<"Que valor quieres eliminar"<<endl;
+            cin>>elim;
+            eliminar(raiz,elim);
         }else{
             cout<<"No hay arbol"<<endl;
         }
@@ -137,8 +142,21 @@ void menu(Nodo *&raiz){
         }
         break;
     case 10:
+        if(raiz){
+        minmax=Val_min(raiz);
+        cout<<"El valor minimo es: "<<minmax<<endl;
+        }else{
+            cout<<"No hay arbol";
+        }
         break;
     case 11:
+    if(raiz){
+        minmax=Val_max(raiz);
+        cout<<"El valor maximo es: "<<minmax<<endl;
+
+        }else{
+            cout<<"No hay arbol";
+        }
         break;
     default:
     cout<<"Introduce una opcion valida"<<endl;
@@ -226,7 +244,18 @@ void inordenconv(Nodo *R){
     }
 }
 
-void eliminar(Nodo *&raiz){
+void eliminar(Nodo *&raiz,int elim){
+    if (raiz->clave>elim)
+    {
+        eliminar(raiz->izquierda,elim);
+    }
+    if(raiz->clave<elim){
+        eliminar(raiz->izquierda,elim);
+    }
+    if (raiz->clave==elim)
+    {
+        
+    }
     
     
         
@@ -241,6 +270,27 @@ void espejo(Nodo *raiz,Nodo *&Esp){
         espejo(raiz->izquierda,Esp->derecha);
         espejo(raiz->derecha,Esp->izquierda);
 }
+
+
+int Val_min(Nodo *raiz){
+    while (raiz->izquierda)
+    {
+        raiz=raiz->izquierda;
+    }
+    return raiz->clave;
+}
+
+
+int Val_max(Nodo *raiz){
+    while (raiz->derecha)
+    {
+        raiz=raiz->derecha;
+    }
+    return raiz->clave;
+    
+}
+
+
 
 //========================================================================
 //=======================Subrutinas de eliminación========================
