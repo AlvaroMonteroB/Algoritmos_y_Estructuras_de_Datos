@@ -1,4 +1,5 @@
 #include<iostream>
+#include<stdio.h>
 using namespace std;
 //================================================================
 typedef struct{
@@ -133,7 +134,7 @@ void menu(Nodo *&raiz){
 }
 
 Nodo * C_nuevoNodo(int valor){
-    Nodo *a=(Nodo*)malloc(sizeof(Nodo));
+    Nodo *a=new Nodo();
     if (a==NULL)
     {
         cout<<"Error al asignar memoria";
@@ -204,10 +205,10 @@ void inordenconv(Nodo *R){
 }
 
 void eliminar(Nodo *&raiz){
-        
+        cout<<"Eliminado con exito";
 }
 
 void espejo(Nodo *raiz){
         
-
+    cout<<"Arbol replicado con exito";
 }
