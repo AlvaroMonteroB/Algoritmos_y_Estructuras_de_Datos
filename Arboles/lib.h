@@ -25,7 +25,7 @@ void preordenconv(Nodo *R);
 void posordenconv(Nodo *R);
 void inordenconv(Nodo *R);
 void eliminar(Nodo *&raiz);
-void espejo(Nodo *raiz);
+void espejo(Nodo *raiz,Nodo *&Esp);
 
 //================================================================
 bool A_nuevoNodo(Nodo *&Hoja,int numero){//Paso por referencia
@@ -57,7 +57,8 @@ bool A_nuevoNodo(Nodo *&Hoja,int numero){//Paso por referencia
 
 void menu(Nodo *&raiz){
     int opt,num;
-    cout<<"1.-Crear Nodo"<<endl<<"2.-Eliminar nodos"<<endl<<"3.-Imprimir nodos en preorden"<<endl<<"4.-Imprimir en postorden"<<endl<<"5.-Imprimir inorden"<<endl<<"6.-Preorden converso"<<endl<<"7.-Posorden converso"<<endl<<"8.-Inorden converso"<<endl;
+    Nodo *arbolespejo=NULL;
+    cout<<"1.-Crear Nodo"<<endl<<"2.-Eliminar nodos"<<endl<<"3.-Imprimir nodos en preorden"<<endl<<"4.-Imprimir en postorden"<<endl<<"5.-Imprimir inorden"<<endl<<"6.-Preorden converso"<<endl<<"7.-Posorden converso"<<endl<<"8.-Inorden converso"<<endl<<"9.-Arbol espejo"<<endl;
     cin>>opt;
     switch (opt)
     {
@@ -122,7 +123,19 @@ void menu(Nodo *&raiz){
             cout<<"No hay arbol"<<endl;
         }
         break;
-
+    case 9:
+     if (raiz!=NULL)
+        {
+            espejo(raiz,arbolespejo);
+             cout<<"Arbol replicado con exito"<<endl;
+            cout<<"Arbol original"<<endl;
+            Preorden(raiz);
+            cout<<endl<<"Arbol espejo"<<endl;
+            Preorden(arbolespejo);cout<<endl;
+        }else{
+            cout<<"No hay arbol"<<endl;
+        }
+        break;
     default:
     cout<<"Introduce una opcion valida"<<endl;
     system("pause");
@@ -181,9 +194,14 @@ void posorden(Nodo *R){
 }
 
 void preordenconv(Nodo *R){
-        cout<<R->clave<<" ";
+        if (R)
+        {
+             cout<<R->clave<<" ";
         preordenconv(R->derecha);
         preordenconv(R->izquierda);
+        }
+        
+       
 }
 
 void posordenconv(Nodo *R){
@@ -205,10 +223,17 @@ void inordenconv(Nodo *R){
 }
 
 void eliminar(Nodo *&raiz){
-        cout<<"Eliminado con exito";
+
+       delete raiz; 
 }
 
-void espejo(Nodo *raiz){
-        
-    cout<<"Arbol replicado con exito";
+void espejo(Nodo *raiz,Nodo *&Esp){
+        if (!raiz)
+        {
+            return;
+        }
+        A_nuevoNodo(Esp,raiz->clave);
+        espejo(raiz->izquierda,Esp->derecha);
+        espejo(raiz->derecha,Esp->izquierda);
 }
+
