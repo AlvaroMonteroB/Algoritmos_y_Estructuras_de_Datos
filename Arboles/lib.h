@@ -58,7 +58,7 @@ bool A_nuevoNodo(Nodo *&Hoja,int numero){//Paso por referencia
 void menu(Nodo *&raiz){
     int opt,num;
     Nodo *arbolespejo=NULL;
-    cout<<"1.-Crear Nodo"<<endl<<"2.-Eliminar nodos"<<endl<<"3.-Imprimir nodos en preorden"<<endl<<"4.-Imprimir en postorden"<<endl<<"5.-Imprimir inorden"<<endl<<"6.-Preorden converso"<<endl<<"7.-Posorden converso"<<endl<<"8.-Inorden converso"<<endl<<"9.-Arbol espejo"<<endl;
+    cout<<"1.-Crear Nodo"<<endl<<"2.-Eliminar nodos"<<endl<<"3.-Imprimir nodos en preorden"<<endl<<"4.-Imprimir en postorden"<<endl<<"5.-Imprimir inorden"<<endl<<"6.-Preorden converso"<<endl<<"7.-Posorden converso"<<endl<<"8.-Inorden converso"<<endl<<"9.-Arbol espejo"<<endl<<"10.-Valor minimo"<<endl<<"11.-Valor maximo"<<endl;
     cin>>opt;
     switch (opt)
     {
@@ -135,6 +135,10 @@ void menu(Nodo *&raiz){
         }else{
             cout<<"No hay arbol"<<endl;
         }
+        break;
+    case 10:
+        break;
+    case 11:
         break;
     default:
     cout<<"Introduce una opcion valida"<<endl;
@@ -223,8 +227,9 @@ void inordenconv(Nodo *R){
 }
 
 void eliminar(Nodo *&raiz){
-
-       delete raiz; 
+    
+    
+        
 }
 
 void espejo(Nodo *raiz,Nodo *&Esp){
@@ -236,4 +241,8 @@ void espejo(Nodo *raiz,Nodo *&Esp){
         espejo(raiz->izquierda,Esp->derecha);
         espejo(raiz->derecha,Esp->izquierda);
 }
+
+//========================================================================
+//=======================Subrutinas de eliminación========================
+//========================================================================
 
