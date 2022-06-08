@@ -26,8 +26,10 @@ void posordenconv(Nodo *R);
 void inordenconv(Nodo *R);
 void eliminar(Nodo *&raiz,int elim);
 void espejo(Nodo *raiz,Nodo *&Esp);
-int Val_min(Nodo raiz);
-int Val_max(Nodo raiz);
+int Val_min(Nodo *raiz);
+int Val_max(Nodo *raiz);
+void elim_hoja(Nodo *&raiz);
+void elim_nod_hijo(Nodo *&raiz);
 
 //================================================================
 bool A_nuevoNodo(Nodo *&Hoja,int numero){//Paso por referencia
@@ -244,18 +246,37 @@ void inordenconv(Nodo *R){
     }
 }
 
-void eliminar(Nodo *&raiz,int elim){
+void eliminar(Nodo *&raiz,int elim){ //TODO TENGO QUE HACER QUE SE ELIMINE EL ENLACE AL NODO ELIMINADO
+    if (!raiz)
+    {
+        cout<<"El valor no se encuentra en el arbol";
+        return;
+    }
     if (raiz->clave>elim)
     {
         eliminar(raiz->izquierda,elim);
+        return;
     }
     if(raiz->clave<elim){
         eliminar(raiz->izquierda,elim);
+        return;
     }
     if (raiz->clave==elim)
     {
+        if (raiz->derecha==NULL&&raiz->izquierda==NULL)
+        {
+            elim_hoja(raiz);
+        }
+        if (!raiz->izquierda&&raiz->derecha&&!raiz->derecha->derecha&&!raiz->derecha->izquierda)
+        {
+            
+        }
         
+        cout<<"ELIMINADO CON EXITO"<<endl;
+        return;
     }
+    
+    
     
     
         
@@ -296,3 +317,10 @@ int Val_max(Nodo *raiz){
 //=======================Subrutinas de eliminación========================
 //========================================================================
 
+void elim_hoja(Nodo *&raiz){
+    delete(raiz);
+    
+}
+void elim_nod_hijo(Nodo *&raiz){
+
+}
