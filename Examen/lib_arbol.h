@@ -1,4 +1,12 @@
+/*
+        Montero Barraza Álvaro David
+        2BV1
+        Ingeniería en Inteligencia Artificial
+*/
+
 #include<iostream>
+#include<queue>
+#include<stack>
 using namespace std;
 //=========Estructura para arboles===============
 typedef struct Nodo{
@@ -12,7 +20,7 @@ typedef struct Nodo{
 bool A_nuevoNodo(Nodo *&Hoja,int numero);
 Nodo * C_nuevoNodo(int valor);
 void menu(Nodo *&raiz);
-void imp_niv(Nodo *raiz,int nivel,int obj);
+void imp_niv(Nodo *raiz,int nivel);
 
 //==========================================================================
 //=============================Funciones====================================
@@ -21,23 +29,12 @@ void imp_niv(Nodo *raiz,int nivel,int obj);
 void menu(Nodo *&raiz){
     int lvl=1;
     //int *array;
-    A_nuevoNodo(raiz,49);
-    A_nuevoNodo(raiz,37);
-    A_nuevoNodo(raiz,89);
-    A_nuevoNodo(raiz,53);
-    A_nuevoNodo(raiz,41);
-    A_nuevoNodo(raiz,13);
-    A_nuevoNodo(raiz,7);
-    A_nuevoNodo(raiz,19);
-    A_nuevoNodo(raiz,71);
-    A_nuevoNodo(raiz,82);
-    A_nuevoNodo(raiz,60);
-    A_nuevoNodo(raiz,25);
-
-    for (int i = 1; i < 13; i++)
+    int array[12]={49,37,89,53,41,13,7,19,71,82,60,25};
+    for (int i = 0; i < 12; i++)
     {
-        imp_niv(raiz,lvl,i);
+        A_nuevoNodo(raiz,array[i]);
     }
+        imp_niv(raiz,lvl);
     system("pause");
 }
 
@@ -84,28 +81,53 @@ Nodo * C_nuevoNodo(int valor){
     return a;
 }
 
-void imp_niv(Nodo *raiz,int nivel,int obj){//zig zag tree
-    if(raiz==NULL){
+void imp_niv(Nodo *raiz,int nivel){
+    Nodo *auxnod;
+    stack<Nodo*> aux;
+    stack<Nodo*>Nivel_act;
+    stack<Nodo*>nivel_sig;
+    if(!raiz){
         return;
     }
-    if (nivel==obj)
+    
+    Nivel_act.push(raiz);
+    while (!Nivel_act.empty())
     {
-     cout<<raiz->clave<<" ";
-    }
-    if(nivel<obj){
+        auxnod=Nivel_act.top();
+        Nivel_act.pop();
+        if (auxnod)
+        {
+         cout<<auxnod->clave<<" ";
+         if(nivel%2==0){
+           nivel_sig.push(auxnod->izquierda);
+           nivel_sig.push(auxnod->derecha);
+            while (!nivel_sig.empty())
+                {
+                        aux.push(nivel_sig.top());
+                        nivel_sig.pop();
+                
+         }while(!aux.empty()){
+                        nivel_sig.push(aux.top());
+                         aux.pop();
+                }
+                
+        }else{
+            nivel_sig.push(auxnod->derecha);
+            nivel_sig.push(auxnod->izquierda);
+        }
+    if (Nivel_act.empty()){
+            
     nivel++;
-    if (nivel%2==0)
-    {
-    imp_niv(raiz->derecha,nivel,obj);
-        imp_niv(raiz->izquierda,nivel,obj);
-    }else{
-        imp_niv(raiz->izquierda,nivel,obj);
-    imp_niv(raiz->derecha,nivel,obj);
-    }
-    
-    
-    }
-    return;
+    aux=Nivel_act;
+    Nivel_act=nivel_sig;
+     nivel_sig=aux;}
+        
+
+        
+        
+        }
     
 
+    
+    }
 }
