@@ -1,5 +1,6 @@
 /*
         Montero Barraza Álvaro David
+        Monroy Fernandez Jose Luis
         2BV1
         Ingeniería en Inteligencia Artificial
 */
@@ -62,6 +63,54 @@ bool A_nuevoNodo(Nodo *&Hoja,int numero){//Paso por referencia
     }
 
 }
+//===========================================================================
+//=======================Subrutina de impresion==============================
+//===========================================================================
+void imp_niv(Nodo *raiz,int nivel){
+    Nodo *auxnod;
+    stack<Nodo*> aux;
+    stack<Nodo*>Nivel_act;
+    stack<Nodo*>nivel_sig;
+    if(!raiz){
+        return;
+    }
+    
+    Nivel_act.push(raiz);
+    while (!Nivel_act.empty())//aqui validamos si el nivel en el que estamos es nulo o no
+    {   auxnod=Nivel_act.top();
+        Nivel_act.pop();
+        if (auxnod)
+        {   cout<<auxnod->clave<<" ";
+         if(nivel%2==0){
+        nivel_sig.push(auxnod->izquierda);
+        nivel_sig.push(auxnod->derecha);
+        while (!nivel_sig.empty()){
+        aux.push(nivel_sig.top());
+        nivel_sig.pop();  
+         }while(!aux.empty()){
+        nivel_sig.push(aux.top());
+         aux.pop();
+                }        
+        }else{
+        nivel_sig.push(auxnod->derecha);
+         nivel_sig.push(auxnod->izquierda);
+        }
+    if (Nivel_act.empty()){   
+    nivel++;
+    aux=Nivel_act;//Hacemos los cambios hasta llegar al ultimo nivel
+    Nivel_act=nivel_sig;
+    nivel_sig=aux;}
+        
+
+        
+        
+        }
+    
+
+    
+    }
+    cout<<endl;
+}
 
 
 Nodo * C_nuevoNodo(int valor){
@@ -81,53 +130,3 @@ Nodo * C_nuevoNodo(int valor){
     return a;
 }
 
-void imp_niv(Nodo *raiz,int nivel){
-    Nodo *auxnod;
-    stack<Nodo*> aux;
-    stack<Nodo*>Nivel_act;
-    stack<Nodo*>nivel_sig;
-    if(!raiz){
-        return;
-    }
-    
-    Nivel_act.push(raiz);
-    while (!Nivel_act.empty())
-    {
-        auxnod=Nivel_act.top();
-        Nivel_act.pop();
-        if (auxnod)
-        {
-         cout<<auxnod->clave<<" ";
-         if(nivel%2==0){
-           nivel_sig.push(auxnod->izquierda);
-           nivel_sig.push(auxnod->derecha);
-            while (!nivel_sig.empty())
-                {
-                        aux.push(nivel_sig.top());
-                        nivel_sig.pop();
-                
-         }while(!aux.empty()){
-                        nivel_sig.push(aux.top());
-                         aux.pop();
-                }
-                
-        }else{
-            nivel_sig.push(auxnod->derecha);
-            nivel_sig.push(auxnod->izquierda);
-        }
-    if (Nivel_act.empty()){
-            
-    nivel++;
-    aux=Nivel_act;
-    Nivel_act=nivel_sig;
-     nivel_sig=aux;}
-        
-
-        
-        
-        }
-    
-
-    
-    }
-}

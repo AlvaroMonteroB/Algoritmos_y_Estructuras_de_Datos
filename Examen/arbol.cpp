@@ -1,5 +1,6 @@
 /*
         Montero Barraza Álvaro David
+        Monroy Fernandez Jose Luis
         2BV1
         Ingeniería en Inteligencia Artificial
 */
@@ -7,7 +8,6 @@
 #include"lib_arbol.h"
 int main(){
     Nodo *raiz=NULL;
-    while(true){
-        menu(raiz);
-    }
+    menu(raiz);
+    return 0;
 }
